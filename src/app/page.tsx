@@ -355,8 +355,9 @@ const Portfolio = () => {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">
-              Let's Connect 🚀
-            </span>
+              Let's Connect
+            </span>{" "}
+            🚀
           </h2>
           <p className="text-gray-400 mb-12 text-lg">
             Feel free to reach out for collaborations or just a friendly hello
