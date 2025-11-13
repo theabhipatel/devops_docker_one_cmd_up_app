@@ -40,9 +40,9 @@ const Portfolio = () => {
     { name: "TypeScript", color: "from-blue-500 to-blue-700" },
     { name: "Docker", color: "from-blue-400 to-cyan-500" },
     { name: "Kubernetes", color: "from-blue-600 to-purple-600" },
+    { name: "Terraform", color: "from-blue-600 to-purple-600" },
     { name: "GitHub", color: "from-blue-600 to-purple-600" },
     { name: "AWS", color: "from-blue-600 to-purple-600" },
-    { name: "Nginx", color: "from-blue-600 to-purple-600" },
   ];
 
   const projects = [
