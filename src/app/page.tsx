@@ -51,7 +51,7 @@ const Portfolio = () => {
       description:
         "Full-stack marketplace with real-time inventory, payment integration, and admin dashboard",
       image:
-        "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1581225218177-9a18341ec628?w=600&h=400&fit=crop",
       demo: "https://www.theabhipatel.com/",
       code: "https://github.com/theabhipatel",
       tags: ["Next.js", "Node.js", "MongoDB"],
