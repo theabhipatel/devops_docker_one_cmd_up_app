@@ -10,6 +10,7 @@ import {
   X,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Portfolio = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -51,8 +52,8 @@ const Portfolio = () => {
         "Full-stack marketplace with real-time inventory, payment integration, and admin dashboard",
       image:
         "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
-      demo: "#",
-      code: "#",
+      demo: "https://www.theabhipatel.com/",
+      code: "https://github.com/theabhipatel",
       tags: ["Next.js", "Node.js", "MongoDB"],
     },
     {
@@ -61,8 +62,8 @@ const Portfolio = () => {
         "CI/CD automation tool with Kubernetes orchestration and multi-cloud deployment support",
       image:
         "https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=600&h=400&fit=crop",
-      demo: "#",
-      code: "#",
+      demo: "https://www.theabhipatel.com/",
+      code: "https://github.com/theabhipatel",
       tags: ["Docker", "Kubernetes", "React"],
     },
     {
@@ -71,8 +72,8 @@ const Portfolio = () => {
         "Live data visualization platform with WebSocket integration and interactive charts",
       image:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-      demo: "#",
-      code: "#",
+      demo: "https://www.theabhipatel.com/",
+      code: "https://github.com/theabhipatel",
       tags: ["TypeScript", "PostgreSQL", "Node.js"],
     },
   ];
@@ -88,7 +89,10 @@ const Portfolio = () => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          <div
+            onClick={() => scrollToSection("home")}
+            className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
+          >
             TheAbhiPatel
           </div>
 
@@ -97,7 +101,7 @@ const Portfolio = () => {
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-gray-300 hover:text-purple-400 transition-colors duration-300"
+                className="text-gray-300 hover:text-purple-400 transition-colors duration-300 cursor-pointer"
               >
                 {item}
               </button>
@@ -185,7 +189,7 @@ const Portfolio = () => {
 
           <button
             onClick={() => scrollToSection("projects")}
-            className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/50 cursor-pointer"
           >
             <span className="relative z-10">View My Work</span>
             <ExternalLink className="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
@@ -276,6 +280,7 @@ const Portfolio = () => {
                   <div className="flex gap-4">
                     <a
                       href={project.demo}
+                      target="theabhipatel"
                       className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-sm font-semibold"
                     >
                       <ExternalLink className="w-4 h-4" />
@@ -283,6 +288,7 @@ const Portfolio = () => {
                     </a>
                     <a
                       href={project.code}
+                      target="theabhipatel_github"
                       className="flex items-center gap-2 px-4 py-2 border border-gray-700 rounded-lg hover:border-purple-500 hover:bg-purple-500/10 transition-all duration-300 text-sm font-semibold"
                     >
                       <Code2 className="w-4 h-4" />
@@ -365,7 +371,7 @@ const Portfolio = () => {
 
           <div className="flex justify-center gap-6 mb-12">
             <a
-              href="https://github.com"
+              href="https://github.com/theabhipatel"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-16 h-16 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center hover:border-purple-500 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-purple-500/30"
@@ -373,7 +379,7 @@ const Portfolio = () => {
               <Github className="w-7 h-7 text-gray-400 group-hover:text-purple-400 transition-colors duration-300" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://linkedin.com/in/theabhipatel"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative w-16 h-16 bg-gray-900 border border-gray-800 rounded-full flex items-center justify-center hover:border-purple-500 transition-all duration-300 hover:scale-110 hover:shadow-xl hover:shadow-purple-500/30"
@@ -410,7 +416,12 @@ const Portfolio = () => {
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-400">
             © 2025{" "}
-            <span className="text-purple-400 font-semibold">TheAbhiPatel</span>.
+            <Link href={"https://www.theabhipatel.com/"} target="theabhipatel">
+              <span className="text-xl font-bold bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent cursor-pointer">
+                TheAbhiPatel
+              </span>
+              .
+            </Link>
           </p>
         </div>
       </footer>
