@@ -18,8 +18,8 @@ services:
       - ./nginx/entrypoint.sh:/entrypoint.sh
       - certbot_certs:/etc/letsencrypt
       - certbot_challenges:/var/www/certbot
-    environment:
-      - DOMAIN=portfolio.theabhipatel.com
+    env_file:
+      - .env
     entrypoint: ["/bin/sh", "/entrypoint.sh"]
     restart: always
 
@@ -30,9 +30,8 @@ services:
       - certbot_certs:/etc/letsencrypt
       - certbot_challenges:/var/www/certbot
       - ./certbot/init.sh:/init.sh
-    environment:
-      - DOMAINS=portfolio.theabhipatel.com
-      - EMAIL=codingwithcod@gmail.com
+    env_file:
+      - .env
     entrypoint: ["/bin/sh", "/init.sh"]
     restart: always
 
