@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+    container_name: nextjs_app
+    restart: always
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_proxy
+    depends_on:
+      - app
+      - certbot
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/entrypoint.sh:/entrypoint.sh
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
+    environment:
+      - DOMAIN=portfolio.theabhipatel.com
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    restart: always
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot_ssl
+    volumes:
+      - certbot_certs:/etc/letsencrypt
+      - certbot_challenges:/var/www/certbot
+      - ./certbot/init.sh:/init.sh
+    environment:
+      - DOMAINS=portfolio.theabhipatel.com
+      - EMAIL=codingwithcod@gmail.com
+    entrypoint: ["/bin/sh", "/init.sh"]
+    restart: always
+
+volumes:
+  certbot_certs:
+  certbot_challenges:
