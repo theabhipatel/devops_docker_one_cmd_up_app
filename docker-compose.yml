@@ -16,6 +16,7 @@ services:
       - "443:443"
     volumes:
       - ./nginx/entrypoint.sh:/entrypoint.sh
+      - ./nginx/templates:/etc/nginx/templates
       - certbot_certs:/etc/letsencrypt
       - certbot_challenges:/var/www/certbot
     env_file:
