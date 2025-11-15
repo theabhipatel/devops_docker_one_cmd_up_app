@@ -13,7 +13,7 @@ echo "⚙️ Generating HTTP-only config for Nginx..."
 cat > "$CONF_PATH" <<EOF
 server {
   listen 80;
-  server_name $DOMAIN;
+  server_name _; # Matching all domains
 
   location /.well-known/acme-challenge/ {
     root /var/www/certbot;
@@ -43,7 +43,7 @@ cat > "$CONF_PATH" <<EOF
 # HTTP server (for renewal + redirect)
 server {
   listen 80;
-  server_name $DOMAIN;
+  server_name _; # Matching all domains
 
   # Certbot renewals
   location /.well-known/acme-challenge/ {
