@@ -93,7 +93,7 @@ const Portfolio = () => {
             onClick={() => scrollToSection("home")}
             className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent cursor-pointer"
           >
-            TheAbhiPatel v1
+            TheAbhiPatel v1 With Auto Setup on server
           </div>
 
           <div className="hidden md:flex gap-8">
