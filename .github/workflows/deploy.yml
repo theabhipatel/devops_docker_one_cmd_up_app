@@ -72,7 +72,7 @@ jobs:
               echo "${{ secrets.ENV_FILE }}" > .env
 
               echo "🚀 Running application for the first time..."
-              docker compose up --build -d
+              sudo docker compose up --build -d
 
               echo "🎉 First-time setup completed successfully!"
             fi
