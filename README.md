@@ -90,6 +90,9 @@ Your app gets deployed in under **2 minutes** with minimal manual work.
   ├── install-docker.sh
   ├── nginx/
   │   └── entrypoint.sh
+  │   └── templates/
+  │       └── http.template
+  │       └── https.template
   ├── certbot/
   │   └── init.sh
   ├── .github/
