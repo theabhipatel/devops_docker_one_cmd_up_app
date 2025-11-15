@@ -1,0 +1,41 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Test Docker Build (CI Check)
+      - name: Build Docker Image 
+        run: |
+          docker build -t myapp-test .
+
+      # Deploy to EC2
+      - name: SSH into EC2 and deploy
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd ~/devops_docker_one_cmd_up_app
+
+            echo "Pulling latest code..."
+            git fetch origin production
+            git reset --hard origin/production
+
+            echo "🎉 Building docker compose..."
+            docker compose down
+            docker compose up --build -d
+
+            echo "Cleanup unused images"
+            docker image prune -f
