@@ -194,11 +194,11 @@ Write code → Push(production) → Your app goes live.
 That's it. 💯
 
 
-## built by :
+### built by :
 <span style="font-weight:600; font-size:56px; color:#ecac0a;">
   TheAbhiPatel
 </span>
 
-[Portfolio]('https://www.theabhipatel.com') | 
+[Portfolio]('https://www.theabhipatel.com')  
 [LinkedIn]('https://www.linkedin.com/in/theabhipatel')
 
