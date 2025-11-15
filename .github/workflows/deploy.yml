@@ -34,7 +34,6 @@ jobs:
             git reset --hard origin/production
 
             echo "🎉 Building docker compose..."
-            docker compose down
             docker compose up --build -d
 
             echo "Cleanup unused images"
