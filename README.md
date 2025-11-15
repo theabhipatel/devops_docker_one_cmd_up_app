@@ -199,6 +199,6 @@ That's it. 💯
   TheAbhiPatel
 </span>
 
-[Portfolio]('https://www.theabhipatel.com')  
-[LinkedIn]('https://www.linkedin.com/in/theabhipatel')
+[Portfolio](https://www.theabhipatel.com) | 
+[LinkedIn](https://www.linkedin.com/in/theabhipatel)
 
