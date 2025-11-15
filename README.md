@@ -6,7 +6,8 @@ Just **push your code to the `production` branch** — your server will automati
 
 Checkout App (vercel) [TheAbhiPatel V1.55](https://theabhipatel-v1-55.vercel.app/)
 
-<img width="1892" height="879" alt="image" src="https://github.com/user-attachments/assets/f22f428b-05ca-4dd9-a995-0a1c9405d3e4" />
+<img width="1887" height="925" alt="image" src="https://github.com/user-attachments/assets/62bdd14a-366a-4868-a77c-c167fc50c62b" />
+
 
 
 ---
