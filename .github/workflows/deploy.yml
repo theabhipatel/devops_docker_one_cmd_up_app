@@ -15,27 +15,63 @@ jobs:
         uses: actions/checkout@v4
 
       # Test Docker Build (CI Check)
-      - name: Build Docker Image 
+      - name: Build Docker Image (CI Test Only)
         run: |
           docker build -t myapp-test .
 
-      # Deploy to EC2
-      - name: SSH into EC2 and deploy
+      - name: Deploy to EC2
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/devops_docker_one_cmd_up_app
+            APP_DIR=~/devops_docker_one_cmd_up_app
 
-            echo "Pulling latest code..."
-            git fetch origin production
-            git reset --hard origin/production
+            echo "===== Checking if application is already installed ===="
 
-            echo "🎉 Building docker compose..."
-            docker compose down
-            docker compose up --build -d
+            if [ -d "$APP_DIR" ]; then
+              echo "📦 App directory exists — updating application..."
+              
+              cd $APP_DIR
 
-            echo "Cleanup unused images"
-            docker image prune -f
+              echo "🔄 Pulling latest production code..."
+              git fetch origin production
+              git reset --hard origin/production
+
+              echo "🟢 Updating .env from GitHub secret..."
+              if [ -f ".env" ]; then
+                cp .env .env.backup_$(date +%s)
+              fi
+              echo "${{ secrets.ENV_FILE }}" > .env
+
+              echo "🚀 Rebuilding and restarting application..."
+              docker compose up --build -d
+
+              echo "🧹 Cleaning up unused images..."
+              docker image prune -f
+
+              echo "✅ Update complete!"
+            else
+              echo "🆕 App not found — running first-time setup..."
+
+              echo "📁 Creating app directory..."
+              mkdir -p $APP_DIR
+
+              echo "🐈 Cloning repository..."
+              git clone https://github.com/${{ github.repository }} $APP_DIR
+
+              cd $APP_DIR
+
+              echo "🐳 Installing Docker using install-docker.sh ..."
+              chmod +x install-docker.sh
+              ./install-docker.sh
+
+              echo "🔍 Creating .env file..."
+              echo "${{ secrets.ENV_FILE }}" > .env
+
+              echo "🚀 Running application for the first time..."
+              docker compose up --build -d
+
+              echo "🎉 First-time setup completed successfully!"
+            fi
