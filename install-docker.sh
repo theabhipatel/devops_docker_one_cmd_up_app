@@ -38,7 +38,6 @@ sudo systemctl start docker
 # Step 6: Add current user to docker group
 echo "👤 Adding current user ($USER) to docker group..."
 sudo usermod -aG docker $USER
-sudo newgrp docker
 
 # Step 7: Verify installation
 echo "✅ Verifying installation..."
