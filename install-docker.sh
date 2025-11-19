@@ -46,4 +46,3 @@ docker compose version
 
 echo "🎉 Docker installation completed successfully!"
 echo "👉 Please log out and log back in, or run: newgrp docker"
-echo "Then test Docker by running: docker run hello-world"
